@@ -10,7 +10,7 @@
             /*justify-content: center;*/
             align-items: center;
             height: 100vh;
-            background-color: burlywood;
+            background-color: pink;
         }
 
         /*標題寬度 上方間距*/
@@ -63,11 +63,56 @@
     </style>
 </head>
 <body>
-
 <div class="container">
     <img class="title" src="imgs/popcat.svg" alt="POPCAT">
     <div class="cat-img" id="p">0</div>
 </div>
+
+<script>
+
+    const img = new Image();
+
+    let count = 0;
+    let catImg = document.getElementById('p');
+    catImg.textContent = count;
+
+    function addCount(){
+        // 計數器累加
+        count += 1;
+    }
+
+    function doit(){
+        // 計數器累加
+        addCount();
+        // 滑鼠按下的時候 更新計數器的顯示
+        catImg.textContent = count;
+        // 切換成張嘴圖片
+        catImg.id = 'op'
+
+        // 播放pops聲音
+        const audio = new Audio('pops/pop1.mp3');
+        audio.play();
+    }
+
+    document.addEventListener('mousedown', function(){
+        doit();
+    });
+
+    document.addEventListener('keydown', function(){
+        doit();
+    });
+
+    document.addEventListener('keyup', function(){
+        // 切換成閉嘴圖片
+        catImg.id = 'p'
+    });
+
+    document.addEventListener('mouseup', function(){
+        // 切換成閉嘴圖片
+        catImg.id = 'p'
+    });
+
+</script>
 
 </body>
 </html>
